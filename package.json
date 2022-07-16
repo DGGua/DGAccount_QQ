@@ -1,7 +1,7 @@
 {
-  "name": "DGLogBackend",
+  "name": "DGAccount_QQ",
   "version": "0.0.1",
-  "description": "Backend for DGLog",
+  "description": "DGAccount_QQ",
   "main": "index.js",
   "author": "DGGua",
   "license": "MIT",
@@ -17,14 +17,8 @@
   "dependencies": {
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
-    "cors": "^2.8.5",
     "dayjs": "^1.11.3",
-    "express": "^4.18.1",
-    "morgan": "^1.10.0",
-    "oicq": "^2.3.1",
-    "reflect-metadata": "^0.1.13",
-    "sqlite3": "^5.0.2",
-    "typeorm": "0.3.7"
+    "oicq": "^2.3.1"
   },
   "scripts": {
     "build": "tsc",
