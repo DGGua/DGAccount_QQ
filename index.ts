@@ -46,6 +46,25 @@ client.on("message.private", async (e) => {
     client.sendPrivateMsg(from_id, strArr.join("\n"));
   }
   if (text == "本月账单") {
+    const { data } = await accountService.listMonth(from_id);
+    const billings = data.data;
+    if (billings.length == 0) {
+      client.sendPrivateMsg(from_id, "今天还没有账单记录哦");
+      return;
+    }
+    const strArr = billings.map((val) =>
+      [
+        `${dayjs(val.create_time).format(`MM/DD`)}`,
+        `￥${val.price}`,
+        `${val.category}`,
+      ].join("\t")
+    );
+    strArr.push(
+      `总支出：￥${billings
+        .map((val) => val.price)
+        .reduce((acc, val) => acc + val)}`
+    );
+    client.sendPrivateMsg(from_id, strArr.join("\n"));
   }
   if (/^记账 .+? [0-9]+(\.[0-9]+)?$/.test(text)) {
     const [_, category, amountStr] = text.split(" ");

@@ -25,6 +25,20 @@ export const accountService = {
       },
     });
   },
+  listMonth: (qq: number) => {
+    const first = dayjs().startOf("month")
+    const end = dayjs().endOf("month")
+    return axios.get<globalResponse<资金变动[]>>("/billing/list", {
+      baseURL: targetURL,
+      data: {
+        userId: qq,
+        dateEnd: end.date(),
+        dateStart: first.date(),
+        monthEnd: end.month() + 1,
+        monthStart: first.month() + 1,
+      },
+    });
+  },
   addBilling: (qq: number, category: string, amount: number) => {
     return axios.post<globalResponse<number>>(targetURL + "/billing/add", {
       userId: qq,
