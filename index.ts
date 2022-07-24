@@ -47,7 +47,7 @@ client.on("message.private", async (e) => {
   }
   if (text == "本月账单") {
   }
-  if (/^记账 .+? [0-9]+?$/.test(text)) {
+  if (/^记账 .+? [0-9]+(\.[0-9]+)?$/.test(text)) {
     const [_, category, amountStr] = text.split(" ");
     const amount = Number.parseInt(amountStr);
     if (isNaN(amount)) {
